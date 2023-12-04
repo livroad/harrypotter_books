@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -21,8 +20,8 @@ class BookController extends Controller
                 return json_decode($jsonData, true);
             });
         } catch (\Exception $e) {
-            // エラーハンドリング: ファイルの読み込みやJSONのデコードでエラーが発生した場合の処理
-            return response()->json(['error' => 'Failed to load data.'], 500);
+            // エラーハンドリング: ファイルの読み込みやJSONのデコードでエラーが発生した場合
+            abort(500, 'Failed to load data.');
         }
 
         $keyElements = $this->getKeyElements($type);
